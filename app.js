@@ -118,7 +118,7 @@ app.get('/', (req, res) => {
 mongoose.connect(process.env.MONGO_URL)
     .then(() => {
         console.log('Connected to database shopApp-db');
-         seedDB();                // seeding the database with dummy data
+        // seedDB();                // seeding the database with dummy data
     })
     .catch((err) => {
         console.log(err);
