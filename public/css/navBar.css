@@ -1,0 +1,7 @@
+#nav-bar {
+    color: #000 !important;
+}
+#nav-bar:hover {
+    background-color: #000 !important;
+    color: #fff !important;
+}

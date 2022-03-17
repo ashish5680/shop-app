@@ -1,0 +1,62 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<main>
+  <%- include("../partials/flash") %> 
+  <div class="mt-5 carouselDiv">
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="https://demo.codezeel.com/prestashop/PRS16/PRS160380/PRS01/modules/cz_imageslider/views/img/sample-1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://demo.codezeel.com/prestashop/PRS16/PRS160380/PRS01/modules/cz_imageslider/views/img/sample-2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="https://demo.codezeel.com/prestashop/PRS16/PRS160380/PRS01/modules/cz_imageslider/views/img/sample-3.jpg" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+</div>
+
+    <div class="row mProducts">
+      <h3>Latest Products</h3> <br>
+      <hr>
+            <% for(let product of products) { %> 
+        <div class="col col-lg-4 col-md-6">
+
+            <div class="card mx-auto mb-5" >
+                <img src="<%= product.image %> " class="card-img-top" alt="Product" id="img">
+                <div class="card-body">
+                  <h5 class="card-title"><%= product.name %></h5>
+                  <p class="card-text pDesc"><%= product.desc.substring(0,90) %>...</p>
+                  <span class="pRate">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+                  <span><%= product.reviews.length %> Review(s)</span>
+                  <br>
+                    <h4 class="me-2 d-inline-block">&#x20B9 <%= product.Nprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></h4>
+                    <h6 class="me-2 d-inline-block text-muted text-decoration-line"><s>&#x20B9 <%= product.Oprice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); %></s></h6><br>
+                 <a href="/products/<%= product.id %> " class="btn btn-outline-primary">Buy Now</a>
+                </div>
+              </div>
+        </div>
+
+        <% } %> 
+
+    </div>
+
+</main>
+ <%- include('../partials/footer') %>

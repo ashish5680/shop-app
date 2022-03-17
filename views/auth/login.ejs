@@ -1,0 +1,40 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+<main class="container">
+
+    <div class="row">
+        <div class="col-lg-6 mt-4 Llogin">
+            <img src="images/Login.svg" class="svg" alt="svg">
+            </div>
+        <div class="col-lg-6 mx-auto mt-5 login-left">
+            <%- include("../partials/flash") %> 
+            <h1 class="display-6">Welcome to ShopApp</h1>
+            <form action="/login" method="POST" class="login-form">
+               
+                <div class="mb-3 input-group"> 
+                    <span class="input-group-text addOn" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                    <input type="text" class="form-control" name="username" id="username" placeholder="Username" required aria-describedby="basic-addon1">
+                </div>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text addOn" id="basic-addon3"><i class="bi bi-key-fill"></i></span>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="Password" required aria-describedby="basic-addon3">
+            
+               </div>
+
+                <button type="submit" class="btn btn-success btn-small">Login</button>
+            </form>
+
+
+        </div>
+    </div>
+
+
+
+
+</main>
+
+
+
+<%- include("../partials/footer") %> 

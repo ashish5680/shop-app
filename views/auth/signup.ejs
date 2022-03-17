@@ -1,0 +1,72 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+<main class="container">
+    <%- include("../partials/flash") %> 
+
+
+    <div class="row signup-row">
+
+        <div class="col col-ld-6 mt-4 signup-left" >
+            <img src="images/signup.svg" class="svg" alt="svg">
+        </div>
+
+        <div class="col-lg-6 mx-auto mt-4 signup-right">
+        
+            <h1 class="display-6">Create Your ShopApp Account</h1>
+
+
+
+
+            <form action="/register" method="POST" class="form">
+              
+                <div class="mb-3 input-group"> 
+                    <span class="input-group-text addOn" id="basic-addon1"><i class="bi bi-person-circle"></i></span>
+                    <input type="text" required class="form-control" name="username" id="username" placeholder="Username" aria-describedby="basic-addon1">
+                </div>
+              
+                <div class="mb-3 input-group">
+                    <span class="input-group-text addOn" id="basic-addon2"><i class="bi bi-envelope-fill"></i></span>
+                    <input class="form-control" required type="email" name="email" id="email" placeholder="Email" aria-describedby="basic-addon2">
+            
+              </div>
+            
+                <div class="mb-3 input-group">
+                    <span class="input-group-text addOn" id="basic-addon3"><i class="bi bi-key-fill"></i></span>
+                    <input class="form-control" required type="password" name="password" id="password" placeholder="Password" aria-describedby="basic-addon3">
+            
+               </div>
+            
+                <div class="category">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" value="seller" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                          Seller
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" name="category" value="buyer" id="flexRadioDefault2" checked>
+                        <label class="form-check-label" for="flexRadioDefault2">
+                          Buyer
+                        </label>
+                      </div>
+            </div>
+               
+
+                <button type="submit" class="btn btn-outline btn-small">Sign Up</button>
+
+                
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</main>
+
+
+
+<%- include("../partials/footer") %> 

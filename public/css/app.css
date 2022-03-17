@@ -1,0 +1,303 @@
+:root {
+  --main-color: #101149;
+  --secondary-color:#444691;
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+  background-color: #ECEDF3;
+}
+.mProducts{
+background-color: white;
+margin-top: 50px;
+padding: 20px;
+}
+.mProducts hr{
+  width: 99%;
+  margin: 5px auto;
+  margin-bottom: 30px;
+}
+.navbar {
+  background-color: var(--main-color) !important;
+
+}
+.cartIconDiv{
+  width: fit-content;
+}
+
+main {
+  margin: 4.5rem;
+  margin-top: 100px !important;
+}
+.card {
+  width: 18rem;
+  box-shadow: 1px 0.5px 2px #dee2e6;
+  transition: 400ms;
+  border-radius: 15px;
+}
+.card:hover {
+  transform: scale(1.01);
+}
+.pDesc{
+  margin-bottom: 0px !important;
+}
+#img {
+  border-radius: 15px;
+}
+
+
+.carouselDiv{
+  width: 100% !important;
+  margin-top: 10px !important;
+}
+
+.reviewCard{
+  border-radius: 10px;
+}
+
+
+/* Footer */
+footer{
+  min-height: 50vh;
+  margin-top: 50px;
+  background-color: #121326;
+}
+footer section{
+  height: 100%;
+  background-color: var(--main-color);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 25px; 
+  flex-wrap: wrap;
+  
+}
+footer #heading_h4{
+  font-weight: 800;
+  color: #fff;
+  
+}
+
+footer li{
+  color: white;
+}
+#foot1 ul{
+  display: flex;
+  flex-direction: column;
+}
+.foot{
+  list-style-type: none;
+}
+.foot li{
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 7px;
+  transition: 200ms;
+}
+.foot li:nth-of-type(1){
+  margin-bottom: 5px;
+}
+.copy{
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: -5px;
+  padding-bottom: 7px;
+  padding-top: 7PX;
+}
+.foot li:hover{
+  color: #9C9CA8;
+  cursor: pointer;
+}
+@media screen and (max-width:727px) {
+  footer section{
+      justify-content: center
+
+  }
+  .foot{
+      align-self: start;
+  }
+  .foot div{
+      margin-bottom: 50px;
+  }
+}
+
+.pRate{
+  color: rgb(241, 241, 50);
+  font-size: 22px;
+  margin-bottom: 5px;
+}
+
+/* Respnsive  Card */
+
+@media screen and (max-width:350px) {
+
+  .card{
+    width: 16rem !important;
+    
+  }
+}
+
+@media screen and (max-width:765px) {
+
+  .card{
+    width: 19rem;
+    
+  }
+  .mProducts{
+    width: 98%;
+    margin: 50px auto;
+  }
+}
+
+@media screen and (max-width:515px) {
+
+  main{
+    margin: 0 !important;
+  }
+  /* .carouselDiv{
+    margin-top: 50px !important;
+  } */
+}
+.card-title{
+  transition: 200ms;
+}
+.card-title:hover{
+  color:var(--secondary-color)
+}
+
+.btn:hover{
+  background-color: var(--secondary-color) !important;
+}
+
+
+/* Navbar */
+
+.bi-bag-check-fill{
+
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Cart */
+
+
+
+.Lcart{
+  background-color: white;
+  border-radius: 10px;
+}
+
+.Ccard{
+  width: 100%;
+}
+
+.Litem input{
+width: 40px;
+}
+
+.Ccard input{
+  text-align: center;
+}
+
+
+.RCart-inner{
+  width: 90%;
+  margin: 0px auto;
+  background-color: white;
+  padding: 10px 5%;
+  border-radius: 10px;
+}
+
+.RCart-inner li{
+  border: none;
+display: flex;
+justify-content: space-between;
+}
+
+
+@media screen and (max-width:990px) {
+  
+  .RCart-inner{
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  
+  .RCart-inner{
+    margin-top: 30px;
+  }
+  .Litem{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .Litem img{
+    margin: 0px auto;
+  }
+}
+
+.Ltext  .card-body{
+  margin: 0px auto;
+  width: fit-content;
+}
+
+.empty{
+  width: fit-content;
+margin: 0px auto;
+  margin-top: 50px;
+  padding: 5px;
+}
+.empty button{
+  margin: 10px auto;
+}
+.empty a{
+  text-decoration: none;
+  color: white;
+}
+.empty div{
+  display: flex;
+  justify-content: center;
+}
+.empty a:hover{
+  color: white;
+}
+
+@media screen and (max-width:990px) {
+
+   .alert{
+    margin-top:100px;
+  }
+  
+  
+}
+
+@media screen and (max-width:430px) {
+
+   
+  main{
+    margin-top: 130px !important;
+  }
+  
+}
+
+
+.orders-icon{
+  transform: scale(1.5);
+}
+
+.nav-item{
+  transition: 400ms;
+  margin: 0px 8px;
+}
+.nav-item:hover{
+  transform: scale(1.05);
+  background-color: var(--secondary-color) !important;
+  border-radius: 5px;
+}
+
+.seachPage{
+  min-height: 80vh !important;
+}

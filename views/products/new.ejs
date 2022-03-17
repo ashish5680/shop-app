@@ -1,0 +1,58 @@
+<%- include("../partials/header") %> 
+<%- include("../partials/navbar") %> 
+
+
+<main class="container">
+
+    <div class="row">
+            <div class="col-lg-6 mt-4">   
+              <img src="/images/Add.svg" alt="svg" class="w-100">
+            </div>
+        <div class="col-lg-6 mx-auto mt-5">
+            <h1 class="display-6">New Product</h1>
+            <form action="/products" method="POST">
+                <div class="mb-3">
+                    <label for="seller" class="form-label">Seller</label>
+                    <input type="text" class="form-control" name="seller" id="seller" placeholder="Seller Name" value="<% if(currentUser) %><%= currentUser.username %> " readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Product Name">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image Url</label>
+                    <input class="form-control" type="text" name="image" id="image" placeholder="Image Url">
+                </div>
+                <div class="mb-3">
+                    <label for="Oprice" class="form-label">Old Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">&#x20B9</span>
+                        <input type="text" name="Oprice" id="Oprice" class="form-control" placeholder="Old Price"  aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Nprice" class="form-label">New Price</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="basic-addon1">&#x20B9</span>
+                        <input type="text" name="Nprice" id="Nprice" class="form-control" placeholder="New Price"  aria-describedby="basic-addon1">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="desc" class="form-label">Description</label>
+                    <textarea class="form-control" name="desc" id="desc"rows="5"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success btn-small">Submit</button>
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+</main>
+
+
+
+<%- include("../partials/footer") %> 

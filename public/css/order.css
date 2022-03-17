@@ -1,0 +1,35 @@
+.orderDiv{
+
+    margin-top: 120px;
+}
+
+.O-header{
+width: 90%;
+margin: 0px auto;
+
+}
+.order-card:hover{
+    transform: scale(1.02);
+}
+
+.order-card{
+  
+    margin: 30px auto !important;
+    background-color: white;
+    padding: 5px;
+    width: 90%;
+    transition: 400ms;
+}
+.order-img{
+    height: 150px !important;
+}
+
+@media screen and (max-width:772px) {
+    
+.order-card{
+    width: 95%;
+}
+    .order{
+        margin-bottom: 10px;
+    }
+}

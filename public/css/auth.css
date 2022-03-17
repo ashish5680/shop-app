@@ -1,0 +1,94 @@
+:root {
+    --main-color: #101149;
+    outline: none !important;
+  }
+
+.form-control{
+    font-size: 17px;
+    border: none !important;
+    border-bottom: 2px solid var(--main-color) !important; 
+}
+.form-control:focus{
+    outline: none !important;
+    border: none !important;
+}
+
+.btn{
+    background: var(--main-color) !important;
+    color: white;
+    font-size: 1.2rem;
+    transition: 300ms;
+    border-radius: 10px;
+
+}
+.form{
+    width: 80% !important;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly !important;
+    height: 500px;
+}
+.btn:hover{
+    transform: scale(1.1);
+    color: white !important;
+}
+.addOn{
+    background: none !important;
+    border: none !important;
+    border-bottom: 2px solid var(--main-color) !important;
+    color: var(--main-color);
+}
+
+.signup-right{
+    margin-top: 30px !important;
+}
+.signup-left{
+    margin-top: 30px !important;
+}
+
+.signup-right h1{
+text-align: center;
+
+}
+
+/* Login Page */
+
+.login-left h1{
+
+    text-align: center;
+}
+.login-form{
+    width: 80% !important;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly !important;
+    height: 350px;
+    margin-bottom: 10px;
+}
+input:focus{
+    outline: none !important;
+}
+
+.category{
+    display: flex;
+    width: 250px;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.google{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.google h3{
+    text-align: center;
+    align-items: flex-start;
+}
+.google .btn{
+    width: 200px;
+    margin: 0px auto;
+    margin-top: 10px;
+}
