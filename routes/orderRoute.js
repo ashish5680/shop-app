@@ -128,7 +128,12 @@ router.post('/placeorder', async (req, res) => {
     req.flash('success', 'Order Placed Successfully!!!');
     res.redirect('/products');
 
-})
+});
+
+
+
+
+
 
 
 

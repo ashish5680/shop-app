@@ -14,6 +14,9 @@ const mongoose = require('mongoose');
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 
 router.post('/cart/:productid/add', isLoggedIn, async (req, res) => {
@@ -104,11 +107,26 @@ router.get('/user/cart', isLoggedIn, async (req, res) => {
     const userid = req.user._id;
     const user = await User.findById(userid).populate('cart.product');
 
-    res.render('cart/userCart', {
-        user
-    });
+    res.render('cart/userCart', {user});
 
 });
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
 
 
@@ -136,6 +154,7 @@ router.delete('/cart/:id/remove', isLoggedIn, async (req, res) => {
     res.redirect('/user/cart');
 
 })
+
 
 
 
@@ -255,6 +274,14 @@ router.patch('/cart/:productid/increment', async (req, res) => {
 
 
 
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
