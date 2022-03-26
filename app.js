@@ -15,7 +15,7 @@ const path = require('path');
 
 
 
-const seedDB = require('./seebDB');
+const seedDB = require('./seedDB');
 
 const methodOverride = require('method-override');
 
@@ -72,15 +72,16 @@ app.use(flash());
 
 
 
+
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 
 passport.use(new LocalStratergy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+
 
 
 // An object that contains response local variables scoped to the request, and therefore available only to the view(s) rendered during that request / response cycle (if any). Otherwise, this property is identical to app.locals.
@@ -103,6 +104,13 @@ app.use(orderRouter);
 
 
 
+
+
+
+
+
+
+
 app.get('/', (req, res) => {
     res.render('home');
 });
@@ -112,7 +120,7 @@ app.get('/', (req, res) => {
 
 
 
-// mongodb://localhost:27017/shopApp-db       // local database
+// mongodb://localhost:27017/shop-app-db      // local database
 // process.env.MONGO_URL      
 // Connecting to database
 mongoose.connect(process.env.MONGO_URL)

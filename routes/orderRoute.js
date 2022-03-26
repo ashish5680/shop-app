@@ -1,21 +1,33 @@
 const express = require('express');
+const router = express.Router();
+
 const sendEmail = require('../sendGrid');
+
 const User = require('../models/user');
 
-const router = express.Router();
+
+
+
+
+
 
 
 router.get('/orders', async (req, res) => {
 
     const userid = req.user._id;
+
     const user = await User.findById(userid).populate('orders.product');
 
+    res.render('orders/allOrders', { user });
 
-
-    res.render('orders/allOrders', {
-        user
-    });
 })
+
+
+
+
+
+
+
 
 
 
@@ -91,8 +103,6 @@ router.post('/placeorder', async (req, res) => {
 
 
 
-
-
     const currentUser = req.user;
 
     await currentUser.save();
@@ -114,12 +124,14 @@ router.post('/placeorder', async (req, res) => {
 
 
 
-
     sendEmail(email, template, ` Hi ${req.user.username},Confirmation of order has placed. Thanks!  Team ShopApp`);
     req.flash('success', 'Order Placed Successfully!!!');
     res.redirect('/products');
 
 })
+
+
+
 
 
 

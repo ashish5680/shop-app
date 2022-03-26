@@ -1,42 +1,68 @@
 const express = require('express');
 const router = express.Router();
+
 const Product = require('../models/product');
-const Review = require('../models/review')
+const Review = require('../models/review');
+
 const isLoggedIn = require('../middleware');
 const mongoose = require('mongoose');
 
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 // Getting all products
-router.get('/products', async (req, res) => {
+router.get('/products', async(req, res) => {
 
     try {
+
         const products = await Product.find({});
 
-
-        res.render('./products/index', {
-            products
-        });
-    } catch (e) {
-        req.flash('error', 'oops,something went wrong');
+        res.render('./products/index', {products});
+    } 
+    
+    catch (e) {
+        req.flash('error', 'oops, something went wrong');
         res.redirect('/error');
     }
 
 
-})
+});
 
-// GEtting page for adding product 
-router.get('/products/new', (req, res) => {
+
+
+
+
+
+
+
+// Getting page for adding product 
+router.get('/products/new', isLoggedIn,  (req, res) => {
+
     try {
         res.render('products/new');
-    } catch (e) {
-        req.flash('error', 'oops,something went wrong');
+    } 
+    catch (e) {
+        req.flash('error', 'oops, something went wrong');
         res.redirect('/error');
     }
-})
 
-// Adding product
+});
 
-router.post('/products', async (req, res) => {
+
+
+
+
+
+
+// Adding a new product
+router.post('/products', isLoggedIn,  async(req, res) => {
 
     try {
         const newProduct = req.body;
@@ -57,6 +83,8 @@ router.post('/products', async (req, res) => {
 
 
 
+
+
 // Show a particular product
 router.get('/products/:id', async (req, res) => {
 
@@ -71,7 +99,7 @@ router.get('/products/:id', async (req, res) => {
     } 
     
     catch (e) {
-        req.flash('error', 'oops,something went wrong');
+        req.flash('error', 'oops, something went wrong');
         res.redirect('/error');
     }
 
@@ -80,21 +108,22 @@ router.get('/products/:id', async (req, res) => {
 
 
 
+
+
+
 // Getting product for edit
-router.get('/products/:id/edit', async (req, res) => {
+router.get('/products/:id/edit', isLoggedIn,  async (req, res) => {
 
     try {
         const { id } = req.params;
 
         const product = await Product.findById(id);
 
-        res.render('products/edit', {
-            product
-        });
+        res.render('products/edit', {product});
     } 
     
     catch (e) {
-        req.flash('error', 'oops,something went wrong');
+        req.flash('error', 'oops, something went wrong');
         res.redirect('/error');
     }
 
@@ -109,7 +138,7 @@ router.get('/products/:id/edit', async (req, res) => {
 
 // Editing product
 
-router.patch('/products/:id', async (req, res) => {
+router.patch('/products/:id', isLoggedIn,  async (req, res) => {
 
     try {
         const updatedProduct = req.body;
@@ -144,7 +173,7 @@ router.patch('/products/:id', async (req, res) => {
 
 // Deleting product
 
-router.delete('/products/:id', async (req, res) => {
+router.delete('/products/:id', isLoggedIn,  async(req, res) => {
 
     try {
 
@@ -158,7 +187,7 @@ router.delete('/products/:id', async (req, res) => {
     } 
     
     catch (e) {
-        req.flash('error', 'oops,something went wrong');
+        req.flash('error', 'oops, something went wrong');
         res.redirect('/error');
     }
 
@@ -171,8 +200,21 @@ router.delete('/products/:id', async (req, res) => {
 
 
 
-// adding review
-router.post('/products/:id/review', isLoggedIn, async (req, res) => {
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// For Reviews
+
+
+
+
+// adding a review
+router.post('/products/:id/review', isLoggedIn, async(req, res) => {
 
     try {
         const { id } = req.params;
@@ -183,9 +225,12 @@ router.post('/products/:id/review', isLoggedIn, async (req, res) => {
         const newReview = new Review({ rating, comment, user: req.user.username });
 
         product.reviews.push(newReview);
+
         await product.save();
         await newReview.save();
+
         req.flash('success', 'review added succesfully');
+
         res.redirect(`/products/${id}`);
 
     } 
@@ -194,7 +239,65 @@ router.post('/products/:id/review', isLoggedIn, async (req, res) => {
         req.flash('error', 'oops,something went wrong');
         res.redirect('/products');
     }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+// Deleting review
+router.delete('/products/review/delete', isLoggedIn,  async(req, res) => {
+
+    try {
+        const {pId, rId } = req.query;
+
+        let id = mongoose.Types.ObjectId(rId);
+
+        await Review.findByIdAndDelete(rId);
+        await Product.findByIdAndUpdate(pId, { $pull: { reviews: {  $in: [id]  } } });
+
+        
+        req.flash('success', 'Review deleted successfully');
+        res.redirect(`/products/${pId}`);
+
+    } 
+    
+    catch (e) {
+        req.flash('error', 'oops,something went wrong');
+        console.log(e);
+    }
+
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// For Search
+
+
+
 
 
 
@@ -216,34 +319,19 @@ router.get('/search', async (req, res) => {
         req.flash('error', 'oops,something went wrong');
         res.redirect('/products');
     }
-})
+});
 
 
 
 
 
 
-// Deleting review
-router.delete('/products/review/delete', async (req, res) => {
-    try {
-        const {pId, rId } = req.query;
 
-        let id = mongoose.Types.ObjectId(rId);
 
-        await Review.findByIdAndDelete(rId);
-        await Product.findByIdAndUpdate(pId, { $pull: { reviews: {  $in: [id]  } } });
+////////////////////////////////////////////////////////////////////////////////////////////////////
 
-        
-        req.flash('success', 'Review deleted successfully');
-        res.redirect(`/products/${pId}`);
 
-    } 
-    
-    catch (e) {
-        req.flash('error', 'oops,something went wrong');
-        console.log(e);
-    }
-})
+
 
 
 

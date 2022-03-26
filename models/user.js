@@ -1,6 +1,4 @@
 
-
-
 const mongoose = require('mongoose');
 
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -29,7 +27,7 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
-    category: {
+    category: {         // the category of user that wheather the user is seller or buyer
         type: String,
         trim: true,
         required: true,
