@@ -139,6 +139,17 @@ mongoose.connect(process.env.MONGO_URL)
 
 
 
+    
+
+app.get('/error', (req, res) => {
+    res.render('error');
+})
+
+
+
+
+
+
 
 
 const PORT = process.env.PORT || 3000;

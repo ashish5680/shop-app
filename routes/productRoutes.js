@@ -179,7 +179,7 @@ router.delete('/products/:id', isLoggedIn,  async(req, res) => {
 
         const { id } = req.params;
 
-        await Product.findOneAndDelete(id);
+        await Product.findByIdAndDelete(id);
 
         req.flash('success', 'product deleted successfully');
 

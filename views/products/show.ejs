@@ -23,13 +23,17 @@
                     <form class="d-inline-block" action="/cart/<%= product.id %>/add " method="post">
                         <button type="submit" class="btn btn-secondary btn-small">Add To Cart</button>
                     </form>
-                    <% if( currentUser!=null && currentUser.category === 'seller'&& currentUser.userName === product.seller  ) {%> 
+
+                  <% if( currentUser && currentUser.category === 'seller' && currentUser.username === product.seller  ) {%> 
+
                   <a href="/products/<%= product._id %>/edit" class="btn btn-info btn-small">Edit</a>
                
                   <form class="d-inline-block" action="/products/<%= product._id %>?_method=DELETE" method="POST">
                       <button class="btn btn-danger btn-small">Delete</button>
                   </form>
+
                   <% } %> 
+
                 </div>
               </div>
         </div>
